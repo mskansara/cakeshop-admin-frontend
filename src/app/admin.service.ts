@@ -25,4 +25,8 @@ export class AdminService {
   viewOrders(status:string):Observable<any> {
     return this.httpClient.get<any>(`http://localhost:8181/viewOrdersByStatus?status=${status}`)
   }
+
+  changeOrderStatus(orderId:number, status:string):Observable<any> {
+    return this.httpClient.put<any>(`http://localhost:8181/changeOrderStatus?orderId=${orderId}&status=${status}`,null);
+  }
 }

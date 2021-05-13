@@ -11,10 +11,12 @@ export class ViewordersComponent implements OnInit {
   status:string;
   order:Array<any> = new Array<any>();
   statusList:Array<any> = new Array<any>();
+  changedStatus:string;
   constructor(private route:ActivatedRoute, private service:AdminService) { }
 
   ngOnInit(): void {
     this.status = this.route.snapshot.paramMap.get('status');
+    this.changedStatus = this.status;
     this.service.viewOrders(this.status).subscribe(
       response=> {
         this.order = response;
@@ -28,6 +30,20 @@ export class ViewordersComponent implements OnInit {
         }  
       }
     )
+  }
+
+  onDataChange(event) {
+    this.changedStatus = event.target.options[event.target.options.selectedIndex].value;
+    console.log(this.changedStatus);
+  }
+
+  changeOrderStatus(orderId:number) {
+    this.service.changeOrderStatus(orderId, this.changedStatus).subscribe(
+      response=> {
+        console.log(response);
+      }
+    )
+    this.ngOnInit();
   }
 
 }
