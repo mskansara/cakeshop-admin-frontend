@@ -21,4 +21,8 @@ export class AdminService {
   fetchCategoryNames():Observable<String[]> {
     return this.httpClient.get<String[]>("http://localhost:8181/fetchCategory");
   }
+
+  viewOrders(status:string):Observable<any> {
+    return this.httpClient.get<any>(`http://localhost:8181/viewOrdersByStatus?status=${status}`)
+  }
 }

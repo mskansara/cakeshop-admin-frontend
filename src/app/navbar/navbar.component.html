@@ -5,21 +5,47 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-            <a class="btn" routerLink="/home">Home</a>
+            <li class="nav-item" style="padding-top: 10px;">
+            <a class="nav-link" routerLink="/home">Home</a>
             </li> &nbsp; &nbsp;
 
-            <li>
-                <a class="btn" routerLink="/addProductCategory">Add Category and Products</a>&nbsp; &nbsp;
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Products</a>&nbsp; &nbsp;
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" routerLink="/addProductCategory">Add Products</a>
+                    <a class="dropdown-item" routerLink="/addProductCategory">Add Categories</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">View Products</a>
+                    <a class="dropdown-item" href="#">View Categories</a>
+                </div>
             </li>
-            <li>
+            
+            <li class="nav-item dropdown">
+                <a class="nav-link  dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Orders</a>&nbsp; &nbsp;
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" [routerLink]="['/viewOrders','PENDING']">View Pending Orders</a>
+                    <a class="dropdown-item" [routerLink]="['/viewOrders','ACCEPTED']">View Accepted Orders</a>
+                    <a class="dropdown-item" [routerLink]="['/viewOrders','DISPATCHED']">View Dispatched Orders</a>
+                    <a class="dropdown-item" [routerLink]="['/viewOrders','DELIVERED']">View Delivered Orders</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" [routerLink]="['/viewOrders','REJECTED']">View Rejected Orders</a>
+                    <a class="dropdown-item" [routerLink]="['/viewOrders','CANCELLED']">View Cancelled Orders</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown" *ngIf="isLoggedIn">
+                <a class="nav-link  dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{adminName}}</a>&nbsp; &nbsp;
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="#">Update Password</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Expense Manager</a>
+                    <a class="dropdown-item" href="#">Business Insights</a>
+                </div>
+            </li>
+            <li *ngIf="!isLoggedIn" class="nav-item">
                 <a class="btn" routerLink="/login">Login</a>&nbsp; &nbsp;
             </li>
-            <li>
-                <a class="btn" routerLink="/">View Orders</a>&nbsp; &nbsp;
-            </li>
-            <li>
-                <button class="btn">Logout</button>
+            <li *ngIf="isLoggedIn" class="nav-item">
+                <button class="btn" (click)="logout()">Logout</button>
             </li>
         </ul>
     </div>

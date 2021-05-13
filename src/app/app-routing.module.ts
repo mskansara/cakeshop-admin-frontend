@@ -4,11 +4,12 @@ import { AddCategoryProductComponent } from './add-category-product/add-category
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { ViewordersComponent } from './vieworders/vieworders.component';
 
 const routes: Routes = [
   
   {
-    path: "", component:LoginComponent
+    path: "", component:HomeComponent
   },
   {
     path: "addProductCategory", component:AddCategoryProductComponent
@@ -18,6 +19,12 @@ const routes: Routes = [
   },
   {
     path: "home", component:HomeComponent
+  },
+  {
+    path: "login", component:LoginComponent
+  },
+  {
+    path: "viewOrders/:status", component:ViewordersComponent
   }
 
 ];
