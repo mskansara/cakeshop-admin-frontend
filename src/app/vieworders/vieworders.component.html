@@ -41,7 +41,7 @@
                 <p class="card-text">Order date: <span style="font-family: 'Poppins-Medium';">{{o.orderedDateTime | date}}</span></p>
               </div>
               <div class="col">
-                <p class="card-text">Arriving By: <span style="font-family: 'Poppins-Medium';">{{o.shippingDate | date:'fullDate'}}</span></p>
+                <p class="card-text">Delivery Date: <span style="font-family: 'Poppins-Medium';">{{o.shippingDate | date:'fullDate'}}</span></p>
               </div>
             </div>
             <br>
@@ -68,6 +68,7 @@
       </div>
     </div>
     
+    <h4 style="text-align:right;">Total Orders - {{noOfOrders}}</h4>
     
 </div>
 <br>

@@ -12,6 +12,7 @@ export class ViewordersComponent implements OnInit {
   order:Array<any> = new Array<any>();
   statusList:Array<any> = new Array<any>();
   changedStatus:string;
+  noOfOrders: number;
   constructor(private route:ActivatedRoute, private service:AdminService) { }
 
   ngOnInit(): void {
@@ -19,6 +20,8 @@ export class ViewordersComponent implements OnInit {
     this.changedStatus = this.status;
     this.service.viewOrders(this.status).subscribe(
       response=> {
+        this.noOfOrders = response.length;
+        console.log(this.noOfOrders);
         this.order = response;
         console.log(this.order);
         if(this.status == "PENDING") {
