@@ -1,5 +1,7 @@
 # CakeshopAdminFrontend
 
+The Admin Dashboard for the online cake shop project is a robust and efficient management system tailored for administrators, providing them with comprehensive tools to oversee and manage incoming orders effectively. The project is designed to enhance the administrative capabilities of the online cake shop
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.3.
 
 ## Development server
